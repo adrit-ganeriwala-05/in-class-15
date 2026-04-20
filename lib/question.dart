@@ -2,7 +2,7 @@
 
 class Question {
   final String questionText;
-  final List<String> answers;      // all 4 options, shuffled
+  final List<String> answers;
   final String correctAnswer;
 
   Question({
@@ -12,19 +12,15 @@ class Question {
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {
-    // Step 1: Pull the correct answer out first so we can
-    // compare against it later in the UI
-    final String correct = json['correct_answer'];
+    final String correct = json['correct_answer'] as String;
 
-    // Step 2: Build a combined list of all 4 answer options
     final List<String> allAnswers =
-        List<String>.from(json['incorrect_answers'])..add(correct);
+        List<String>.from(json['incorrect_answers'] as List)..add(correct);
 
-    // Step 3: Shuffle so the correct answer isn't always last
     allAnswers.shuffle();
 
     return Question(
-      questionText: json['question'],
+      questionText: json['question'] as String,
       answers: allAnswers,
       correctAnswer: correct,
     );

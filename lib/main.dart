@@ -10,6 +10,8 @@ void main() {
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Color(0xFFF2F2F7),
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
   runApp(const QuizApp());
@@ -24,15 +26,15 @@ class QuizApp extends StatelessWidget {
       title: 'Trivia',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'SF Pro Display',
         colorScheme: const ColorScheme.light(
           primary: Color(0xFF007AFF),
-          background: Color(0xFFF2F2F7),
           surface: Colors.white,
+          surfaceContainerHighest: Color(0xFFF2F2F7),
         ),
+        scaffoldBackgroundColor: const Color(0xFFF2F2F7),
         useMaterial3: true,
       ),
-      home: const QuizScreen(),
+      home: const StartScreen(),
     );
   }
 }
